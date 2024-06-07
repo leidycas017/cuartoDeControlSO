@@ -36,7 +36,7 @@ In the implementation of this work, the following materials were required:
 - Wiring connections
 - Breadboard
 - Personal computer
-- Cell pones
+- Cell phones
 - WIFI network.
 
 ### Breadboard
