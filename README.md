@@ -162,11 +162,108 @@ The BOOT button is located on the left side of the board next to the USB connect
 - You can add new machines and or remove them.
 - As you can see in the connection diagram, the load (LED + resistor) is connected directly to the microcontroller pin. A better way to do this is to install an isolation device such as the 74HC244 chip. If you prefer, you can use optocouplers such as the PC817 chip. Any of these devices is compatible with the ESP32, the benefit obtained is to establish an insulation layer that protects the chip in case of electrical failures in the load to which the microcontroller is subjected.
 
-### References
-[1]	Carrasco, D. (2021, abril 25). WLAN en ESP32: Primeros pasos con el Wifi. ElectroSoftCloud. https://www.electrosoftcloud.com/wlan-en-esp32-primeros-pasos-con-el-wifi/
-[2]	Barry, R., & The FreeRTOS Team. (n.d.). Mastering the FreeRTOS™ Real Time Kernel: A Hands-On Tutorial Guide. FreeRTOS. https://freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf
-[3]	Pinillos, J. M. (2020, mayo 7). Básicos ESP32: Mapeo de pines y sensores internos. Tecnotízate. https://tecnotizate.es/esp32-mapeo-de-pines-y-sensores-internos/
-[4]	Punto Flotante S.A. (2022). Manual básico NodeMCU ESP32 DevKit V1 Arduino IDE. https://www.puntoflotante.net/MANUAL-BASICO-NODEMCU-ESP32-ARDUINO.pdf
-[5]	Espressif Systems. (n.d.). ESP-WROOM-32 Datasheet. Retrieved from https://www.alldatasheet.com/view.jsp?Searchword=Esp-wroom-32%20datasheet&gad_source=1&gclid=CjwKCAiAopuvBhBCEiwAm8jaMUrA9d3ZAeRBJZGn3q_aJnhFT3ny3V6c93gDRD1OtHYEOarCMxLaWRoCNPYQAvD_BwE
-[6]	Electronics. (2021, julio). Especificaciones del módulo ESP32. Vasanza. https://vasanza.blogspot.com/2021/07/especificaciones-del-modulo-esp32.html
-[7]	Espressif Systems. (s.f.). ESP32. https://www.espressif.com/en/products/socs/esp32
+# Pruebas de Conectividad Wi-Fi
+
+## 1. Objetivo
+Verificar la capacidad del ESP32 para conectarse a la red Wi-Fi y mantener una comunicación estable con los dispositivos cliente.
+
+## 2. Procedimiento
+- Configurar el ESP32 con las credenciales de la red Wi-Fi.
+- Conectar el ESP32 desde un computador, un celular y una tablet.
+- Interactuar con el sistema a través de la interfaz gráfica para gestionar el arranque y parada de las máquinas simuladas.
+
+## 3. Resultados
+- **Conexión Exitosa:** La conexión con el dispositivo ESP32 fue exitosa desde un computador, un celular y una tablet.
+- **Estabilidad de la Red:** Todo funcionó bien mientras la red de comunicación fue estable.
+
+## 4. Problemas Identificados
+- **Dependencia de la Estabilidad de la Red:** Si la red no es estable, se pierde el control del sistema, lo cual es inaceptable para un cuarto de control industrial.
+- **Falta de Plan B:** No se tenía un plan alternativo para situaciones de falla en la red.
+- **Acceso no Restringido:** Cualquier persona con acceso a la red Wi-Fi puede conectarse al sistema, lo que es inaceptable por motivos de seguridad.
+
+## 5. Recomendaciones
+- **Suministrador de Red Confiable:** Garantizar un servicio de red confiable mediante un proveedor de red de alta calidad.
+- **Plan de Emergencia:** Implementar un software de respaldo instalado en una máquina local para permitir la operación en caso de fallos de comunicación, asegurando así la continuidad del control del sistema.
+- **Sistema de Autenticación:** Implementar un sistema de autenticación para restringir el acceso al sistema de gestión del cuarto de control solo a usuarios autorizados.
+
+# Prueba de Funcionamiento de las Máquinas
+
+## 1. Objetivo
+Verificar que los LEDs representan correctamente el estado de las máquinas simuladas.
+
+## 2. Procedimiento
+- Subir un firmware de prueba para controlar los LEDs.
+- Enviar comandos de arranque y parada desde la interfaz gráfica.
+- Verificar el encendido y apagado de los LEDs.
+
+## 3. Resultados
+- **Funcionamiento Correcto:** Los LEDs se encendieron y apagaron según los comandos recibidos, representando correctamente el estado de las máquinas.
+
+# Pruebas de la Interfaz Gráfica
+
+## 1. Objetivo
+Verificar la funcionalidad y usabilidad de la interfaz gráfica.
+
+## 2. Procedimiento
+- Acceder a la interfaz gráfica desde varios dispositivos cliente (computador, celular, tablet).
+- Interactuar con la interfaz para gestionar el arranque y parada de las máquinas.
+- Verificar que los cambios se reflejen correctamente en el sistema.
+
+## 3. Resultados
+- **Funcionalidad Adecuada:** La interfaz gráfica fue accesible y funcional en todos los dispositivos cliente probados. Los comandos enviados se ejecutaron correctamente.
+
+# Pruebas de Comunicación Cliente-Servidor
+
+## 1. Objetivo
+Verificar la comunicación entre el ESP32 y los dispositivos cliente.
+
+## 2. Procedimiento
+- Enviar comandos desde varios dispositivos cliente.
+- Verificar que el ESP32 recibe y ejecuta los comandos correctamente.
+
+## 3. Resultados
+- **Comunicación Fluida:** La comunicación cliente-servidor fue fluida y sin errores de transmisión.
+
+# Pruebas de Estabilidad del Sistema
+
+## 1. Objetivo
+Verificar la estabilidad del sistema bajo operación continua.
+
+## 2. Procedimiento
+- Ejecutar el sistema durante un periodo extendido (cuatro horas).
+- Monitorizar el rendimiento y la estabilidad.
+
+## 3. Resultados
+- **Estabilidad Aceptable:** El sistema funcionó continuamente sin fallos ni reinicios inesperados durante el periodo de prueba.
+
+# Problemas de Configuración del Sistema
+
+## 1. Problema Identificado
+- **Cambio de Red Wi-Fi:** Actualmente, cambiar las credenciales de la red Wi-Fi requiere volver a descargar el firmware al dispositivo, lo cual es poco práctico.
+
+## 2. Recomendaciones
+- **Rutina de Configuración de Arranque:** Implementar una rutina que, durante el arranque del ESP32, permita configurar las credenciales de la red Wi-Fi y almacenar estos valores permanentemente en la memoria del dispositivo.
+
+# Problemas de Supervisión del Estado del Sistema
+
+## 1. Problema Identificado
+- **Supervisión del Estado de Red y Operación:** Actualmente, para ver el estado de la red y la operación del ESP32, es necesario tener el chip conectado al IDE de Arduino, lo cual es impráctico para el uso final.
+
+## 2. Recomendaciones
+- **Pantalla y Teclados Integrados:**
+  - **Información En Pantalla:** El sistema debe mostrar:
+    - Estado de conexión de la red Wi-Fi.
+    - Identificador de la red a la que está conectada.
+    - Velocidad de conexión de la red.
+    - Información del estado operativo del ESP32.
+- **Interfaz de Usuario Local:** Implementar opciones de usuario para permitir la configuración y supervisión sin depender de dispositivos externos.
+
+# Conclusiones
+El sistema de simulación de gestión de un cuarto de control central con ESP32 ha demostrado ser funcional y estable bajo condiciones de red adecuadas. Sin embargo, se han identificado áreas críticas de mejora, incluyendo la seguridad del acceso, la flexibilidad de configuración de la red Wi-Fi, y la supervisión del estado del sistema. Para mejorar la fiabilidad y seguridad del sistema en un entorno industrial real, se recomienda:
+
+- **Mejorar la Calidad de la Red:** Colaborar con un proveedor de red confiable para asegurar una conexión estable.
+- **Implementar un Plan de Emergencia:** Desarrollar e implementar un software de respaldo que permita la operación local del sistema en caso de fallos de comunicación.
+- **Sistema de Autenticación:** Implementar medidas de seguridad para restringir el acceso al sistema a usuarios autorizados.
+- **Flexibilidad en la Configuración de la Red:** Crear una rutina de arranque que permita cambiar las credenciales de la red Wi-Fi sin necesidad de reprogramar el dispositivo.
+- **Supervisión Local del Estado del Sistema:** Incorporar una pantalla y un teclado integrados en el sistema para permitir la supervisión y configuración directa del dispositivo.
+Con estas mejoras, el sistema podrá cumplir con los requisitos de robustez, fiabilidad y seguridad necesarios para un cuarto de control industrial.
