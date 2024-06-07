@@ -162,108 +162,111 @@ The BOOT button is located on the left side of the board next to the USB connect
 - You can add new machines and or remove them.
 - As you can see in the connection diagram, the load (LED + resistor) is connected directly to the microcontroller pin. A better way to do this is to install an isolation device such as the 74HC244 chip. If you prefer, you can use optocouplers such as the PC817 chip. Any of these devices is compatible with the ESP32, the benefit obtained is to establish an insulation layer that protects the chip in case of electrical failures in the load to which the microcontroller is subjected.
 
-# Pruebas de Conectividad Wi-Fi
 
-## 1. Objetivo
-Verificar la capacidad del ESP32 para conectarse a la red Wi-Fi y mantener una comunicación estable con los dispositivos cliente.
 
-## 2. Procedimiento
-- Configurar el ESP32 con las credenciales de la red Wi-Fi.
-- Conectar el ESP32 desde un computador, un celular y una tablet.
-- Interactuar con el sistema a través de la interfaz gráfica para gestionar el arranque y parada de las máquinas simuladas.
+# Wi-Fi Connectivity Tests
 
-## 3. Resultados
-- **Conexión Exitosa:** La conexión con el dispositivo ESP32 fue exitosa desde un computador, un celular y una tablet.
-- **Estabilidad de la Red:** Todo funcionó bien mientras la red de comunicación fue estable.
+## 1. Objective
+Verify the ESP32's ability to connect to the Wi-Fi network and maintain stable communication with client devices.
 
-## 4. Problemas Identificados
-- **Dependencia de la Estabilidad de la Red:** Si la red no es estable, se pierde el control del sistema, lo cual es inaceptable para un cuarto de control industrial.
-- **Falta de Plan B:** No se tenía un plan alternativo para situaciones de falla en la red.
-- **Acceso no Restringido:** Cualquier persona con acceso a la red Wi-Fi puede conectarse al sistema, lo que es inaceptable por motivos de seguridad.
+## 2. Procedure
+- Configure the ESP32 with the Wi-Fi network credentials.
+- Connect the ESP32 from a computer, a cellphone, and a tablet.
+- Interact with the system through the graphical interface to manage the startup and shutdown of the simulated machines.
 
-## 5. Recomendaciones
-- **Suministrador de Red Confiable:** Garantizar un servicio de red confiable mediante un proveedor de red de alta calidad.
-- **Plan de Emergencia:** Implementar un software de respaldo instalado en una máquina local para permitir la operación en caso de fallos de comunicación, asegurando así la continuidad del control del sistema.
-- **Sistema de Autenticación:** Implementar un sistema de autenticación para restringir el acceso al sistema de gestión del cuarto de control solo a usuarios autorizados.
+## 3. Results
+- **Successful Connection:** The connection with the ESP32 device was successful from a computer, a cellphone, and a tablet.
+- **Network Stability:** Everything worked well as long as the communication network was stable.
 
-# Prueba de Funcionamiento de las Máquinas
+## 4. Identified Issues
+- **Dependence on Network Stability:** If the network is not stable, control of the system is lost, which is unacceptable for an industrial control room.
+- **Lack of Plan B:** There was no alternative plan for network failure situations.
+- **Unrestricted Access:** Anyone with access to the Wi-Fi network can connect to the system, which is unacceptable for security reasons.
 
-## 1. Objetivo
-Verificar que los LEDs representan correctamente el estado de las máquinas simuladas.
+## 5. Recommendations
+- **Reliable Network Provider:** Ensure a reliable network service through a high-quality network provider.
+- **Emergency Plan:** Implement backup software installed on a local machine to allow operation in case of communication failures, thus ensuring the continuity of system control.
+- **Authentication System:** Implement an authentication system to restrict access to the control room management system to authorized users only.
 
-## 2. Procedimiento
-- Subir un firmware de prueba para controlar los LEDs.
-- Enviar comandos de arranque y parada desde la interfaz gráfica.
-- Verificar el encendido y apagado de los LEDs.
+# Machine Operation Test
 
-## 3. Resultados
-- **Funcionamiento Correcto:** Los LEDs se encendieron y apagaron según los comandos recibidos, representando correctamente el estado de las máquinas.
+## 1. Objective
+Verify that the LEDs correctly represent the status of the simulated machines.
 
-# Pruebas de la Interfaz Gráfica
+## 2. Procedure
+- Upload a test firmware to control the LEDs.
+- Send startup and shutdown commands from the graphical interface.
+- Verify the LEDs turn on and off.
 
-## 1. Objetivo
-Verificar la funcionalidad y usabilidad de la interfaz gráfica.
+## 3. Results
+- **Proper Functioning:** The LEDs turned on and off according to the received commands, correctly representing the status of the machines.
 
-## 2. Procedimiento
-- Acceder a la interfaz gráfica desde varios dispositivos cliente (computador, celular, tablet).
-- Interactuar con la interfaz para gestionar el arranque y parada de las máquinas.
-- Verificar que los cambios se reflejen correctamente en el sistema.
+# Graphical Interface Tests
 
-## 3. Resultados
-- **Funcionalidad Adecuada:** La interfaz gráfica fue accesible y funcional en todos los dispositivos cliente probados. Los comandos enviados se ejecutaron correctamente.
+## 1. Objective
+Verify the functionality and usability of the graphical interface.
 
-# Pruebas de Comunicación Cliente-Servidor
+## 2. Procedure
+- Access the graphical interface from various client devices (computer, cellphone, tablet).
+- Interact with the interface to manage the startup and shutdown of the machines.
+- Verify that changes are correctly reflected in the system.
 
-## 1. Objetivo
-Verificar la comunicación entre el ESP32 y los dispositivos cliente.
+## 3. Results
+- **Adequate Functionality:** The graphical interface was accessible and functional on all tested client devices. The sent commands were executed correctly.
 
-## 2. Procedimiento
-- Enviar comandos desde varios dispositivos cliente.
-- Verificar que el ESP32 recibe y ejecuta los comandos correctamente.
+# Client-Server Communication Tests
 
-## 3. Resultados
-- **Comunicación Fluida:** La comunicación cliente-servidor fue fluida y sin errores de transmisión.
+## 1. Objective
+Verify the communication between the ESP32 and the client devices.
 
-# Pruebas de Estabilidad del Sistema
+## 2. Procedure
+- Send commands from various client devices.
+- Verify that the ESP32 receives and executes the commands correctly.
 
-## 1. Objetivo
-Verificar la estabilidad del sistema bajo operación continua.
+## 3. Results
+- **Smooth Communication:** The client-server communication was smooth and error-free.
 
-## 2. Procedimiento
-- Ejecutar el sistema durante un periodo extendido (cuatro horas).
-- Monitorizar el rendimiento y la estabilidad.
+# System Stability Tests
 
-## 3. Resultados
-- **Estabilidad Aceptable:** El sistema funcionó continuamente sin fallos ni reinicios inesperados durante el periodo de prueba.
+## 1. Objective
+Verify the stability of the system under continuous operation.
 
-# Problemas de Configuración del Sistema
+## 2. Procedure
+- Run the system for an extended period (four hours).
+- Monitor performance and stability.
 
-## 1. Problema Identificado
-- **Cambio de Red Wi-Fi:** Actualmente, cambiar las credenciales de la red Wi-Fi requiere volver a descargar el firmware al dispositivo, lo cual es poco práctico.
+## 3. Results
+- **Acceptable Stability:** The system ran continuously without failures or unexpected restarts during the test period.
 
-## 2. Recomendaciones
-- **Rutina de Configuración de Arranque:** Implementar una rutina que, durante el arranque del ESP32, permita configurar las credenciales de la red Wi-Fi y almacenar estos valores permanentemente en la memoria del dispositivo.
+# System Configuration Issues
 
-# Problemas de Supervisión del Estado del Sistema
+## 1. Identified Issue
+- **Wi-Fi Network Change:** Currently, changing the Wi-Fi network credentials requires re-uploading the firmware to the device, which is impractical.
 
-## 1. Problema Identificado
-- **Supervisión del Estado de Red y Operación:** Actualmente, para ver el estado de la red y la operación del ESP32, es necesario tener el chip conectado al IDE de Arduino, lo cual es impráctico para el uso final.
+## 2. Recommendations
+- **Startup Configuration Routine:** Implement a routine that, during the startup of the ESP32, allows configuring the Wi-Fi network credentials and storing these values permanently in the device's memory.
 
-## 2. Recomendaciones
-- **Pantalla y Teclados Integrados:**
-  - **Información En Pantalla:** El sistema debe mostrar:
-    - Estado de conexión de la red Wi-Fi.
-    - Identificador de la red a la que está conectada.
-    - Velocidad de conexión de la red.
-    - Información del estado operativo del ESP32.
-- **Interfaz de Usuario Local:** Implementar opciones de usuario para permitir la configuración y supervisión sin depender de dispositivos externos.
+# System Status Monitoring Issues
 
-# Conclusiones
-El sistema de simulación de gestión de un cuarto de control central con ESP32 ha demostrado ser funcional y estable bajo condiciones de red adecuadas. Sin embargo, se han identificado áreas críticas de mejora, incluyendo la seguridad del acceso, la flexibilidad de configuración de la red Wi-Fi, y la supervisión del estado del sistema. Para mejorar la fiabilidad y seguridad del sistema en un entorno industrial real, se recomienda:
+## 1. Identified Issue
+- **Network and Operation Status Monitoring:** Currently, to see the network status and the operation of the ESP32, the chip must be connected to the Arduino IDE, which is impractical for end use.
 
-- **Mejorar la Calidad de la Red:** Colaborar con un proveedor de red confiable para asegurar una conexión estable.
-- **Implementar un Plan de Emergencia:** Desarrollar e implementar un software de respaldo que permita la operación local del sistema en caso de fallos de comunicación.
-- **Sistema de Autenticación:** Implementar medidas de seguridad para restringir el acceso al sistema a usuarios autorizados.
-- **Flexibilidad en la Configuración de la Red:** Crear una rutina de arranque que permita cambiar las credenciales de la red Wi-Fi sin necesidad de reprogramar el dispositivo.
-- **Supervisión Local del Estado del Sistema:** Incorporar una pantalla y un teclado integrados en el sistema para permitir la supervisión y configuración directa del dispositivo.
-Con estas mejoras, el sistema podrá cumplir con los requisitos de robustez, fiabilidad y seguridad necesarios para un cuarto de control industrial.
+## 2. Recommendations
+- **Integrated Display and Keyboards:**
+  - **On-Screen Information:** The system should display:
+    - Wi-Fi connection status.
+    - Identifier of the connected network.
+    - Network connection speed.
+    - Operational status information of the ESP32.
+- **Local User Interface:** Implement user options to allow configuration and monitoring without relying on external devices.
+
+# Conclusions
+The ESP32-based simulation system for managing a central control room has proven to be functional and stable under adequate network conditions. However, critical areas for improvement have been identified, including access security, flexibility of Wi-Fi network configuration, and system status monitoring. To enhance the system's reliability and security in a real industrial environment, the following are recommended:
+
+- **Improve Network Quality:** Collaborate with a reliable network provider to ensure a stable connection.
+- **Implement an Emergency Plan:** Develop and implement backup software that allows local operation of the system in case of communication failures.
+- **Authentication System:** Implement security measures to restrict system access to authorized users only.
+- **Flexibility in Network Configuration:** Create a startup routine that allows changing Wi-Fi network credentials without needing to reprogram the device.
+- **Local System Status Monitoring:** Incorporate an integrated display and keyboard into the system to allow direct monitoring and configuration of the device.
+
+With these improvements, the system will be able to meet the robustness, reliability, and security requirements necessary for an industrial control room.
